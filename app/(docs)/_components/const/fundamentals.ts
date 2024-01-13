@@ -3,17 +3,9 @@ import { SideMap } from "@/types/docs";
 
 export const fundamentals: SideMap = [
     {
-        type: 'group',
+        type: 'single',
         name: 'Начало работы',
         id: 'fundamentals',
-        items: [
-            {
-                type: 'single',
-                id: 'fundamentals/create-account',
-                name: 'Создайте аккаунт',
-                hasArrow: true
-            },
-        ]
     },
     {
         type: 'group',

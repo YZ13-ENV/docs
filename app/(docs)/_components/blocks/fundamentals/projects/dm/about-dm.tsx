@@ -1,25 +1,30 @@
-import { MDXRemote } from "next-mdx-remote/rsc"
-import remarkBreaks from 'remark-breaks'
+import MDXRemote from "@/components/shared/mdx-remote"
 
 const AboutProjectDM = () => {
     return (
-        <div className='w-full h-fit'>
-            <MDXRemote 
-            options={{
-                mdxOptions: { remarkPlugins: [remarkBreaks] },
-            }}
-            source={`
-                ## DM (DarkMaterial) 
+        <div className='w-full h-fit md-layout'>
+            <MDXRemote>
+                {`
+                    ## DM (DarkMaterial)
 
-                Полное название - **DarkMaterial**, далее **DM**.
+                    Полное название - **DarkMaterial**, далее **DM**.
 
+                    Главное приложение семейства DM, где происходит управление аккаунтом пользователя, где также можно легко перейти к другим приложениям DM Family.
 
-                ## Для чего нужен DM???
+                    ## Обновление от 12 Января 2024
 
-                Корневое приложение семейства DM, оно выполняет роль хаба всех приложений, управлением профилем и местом авторизации.
-            `
-            .replace(/\n/gi, "&nbsp; \n")
-            } />
+                    Обновление логотипа DM
+                    <div className='flex items-center gap-4 mb-6'>
+                        <img src="/DM-dark-old.svg" width={48} height={48} />
+                        <span>></span>
+                        <img src="/DM-dark.svg" width={48} height={48} />
+                    </div>
+                    - Перенос документации с /docs на [docs.darkmaterial.space](https://docs.darkmaterial.space)
+                    - Добавлена форма обратной связи
+                    - Добавлена возможность обновить аватар профиля
+                    - Добавлена возможность обновить профессию
+                `}
+            </MDXRemote>
         </div>
     )
 }

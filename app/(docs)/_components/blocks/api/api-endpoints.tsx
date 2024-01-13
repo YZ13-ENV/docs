@@ -1,31 +1,23 @@
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import React from 'react'
-import remarkBreaks from 'remark-breaks'
+import MDXRemote from "@/components/shared/mdx-remote"
 
 const ApiEndpoints = () => {
     return (
         <div className='w-full h-full'>
-            <MDXRemote
-            options={{
-                scope: {
-                    name: 'DM',
-                },
-                mdxOptions: { remarkPlugins: [remarkBreaks] },
-            }}
-            source={`
-                ## {name} REST API Endpoints
+            <MDXRemote>
+                {`
+                    
+                    ## DM REST API Endpoints
             
-                ### Notes
+                    ### Notes
+    
+                    ### Projects
+    
+                    ### User
+    
+                    ### Shots
 
-                ### Projects
-
-                ### User
-
-                ### Shots
-
-            `
-            .replace(/\n/gi, "&nbsp; \n")
-            } />
+                `}
+            </MDXRemote>
         </div>
     )
 }
