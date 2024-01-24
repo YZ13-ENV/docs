@@ -1,6 +1,5 @@
 'use client'
 import { docFinder } from "@/helpers/docFinder"
-import { parseDocId } from "@/helpers/docs"
 import SideGroup from "./side/side-group"
 import SideElement from "./side/side-element"
 import { useMediaQuery } from "react-responsive"
@@ -11,22 +10,21 @@ import { maps } from "./docs-maps"
 import { usePathname, useRouter } from "next/navigation"
 
 type Props = {
-    docId: string[]
 }
-const Side = ({ docId }: Props) => {
+const Side = ({  }: Props) => {
     const prefix = '/docs/'
     const [loading, setLoading] = useState(true)
-    const parsedDocId = parseDocId(docId)
-    const documentation = docFinder(parsedDocId.sideValue)
-    const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
     const path = usePathname()
     const currentSection = useMemo(() => { return path.replace(prefix, '') },[path])
+    const documentation = docFinder(currentSection)
+    const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
     const [selected, setSelected] = useState<string>(currentSection)
     const { push } = useRouter()
     useEffect(() => {
         setLoading(false)
     },[])
     useEffect(() => {
+        console.log(selected, currentSection)
         if (selected !== currentSection) {
             const withPrefix = prefix + selected
             push(withPrefix)
@@ -58,7 +56,7 @@ const Side = ({ docId }: Props) => {
             {
                 documentation &&
                 documentation.side.map((item, index) => {
-                    if (item.type === 'group') return <SideGroup providedId={parsedDocId.sideValue} key={'group-' + index} group={item} />
+                    if (item.type === 'group') return <SideGroup providedId={currentSection} key={'group-' + index} group={item} />
                     if (item.type === 'single') return <SideElement key={'single-' + index} element={item} />
                     return null
                 })

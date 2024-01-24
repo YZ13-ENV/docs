@@ -1,15 +1,11 @@
 import DocsNav from "@/app/(docs)/_components/docs-nav"
-import Side from "@/app/(docs)/_components/side"
 import Header from "@/components/widgets/header"
+import Side from "../../_components/side"
 
 type Props = {
     children: JSX.Element | JSX.Element[]
-    params: {
-        id: string[]
-    }
 }
-const layout = ({ children, params }: Props) => {
-    const docId = params.id
+const layout = ({ children }: Props) => {
     return (
         <>
             <div className='max-w-7xl mx-auto'>
@@ -17,8 +13,10 @@ const layout = ({ children, params }: Props) => {
             </div>
             <DocsNav />
             <div className='max-w-7xl w-full min-h-screen mx-auto h-full flex lg:flex-row flex-col items-start py-6'>
-                <Side docId={docId} />
-                { children }
+                <Side />
+                <div className="w-full h-fit p-6 md-layout">
+                    { children }
+                </div>
                 <div className='w-64 shrink-0 lg:flex hidden h-full px-6'></div>
             </div>
             <footer className="py-12 border-t bg-card">
