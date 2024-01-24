@@ -16,7 +16,7 @@ const layout = ({ children, params }: Props) => {
                 <Header />
             </div>
             <DocsNav />
-            <div className='max-w-7xl w-full min-h-screen mx-auto h-full flex items-start py-6'>
+            <div className='max-w-7xl w-full min-h-screen mx-auto h-full flex lg:flex-row flex-col items-start py-6'>
                 <Side docId={docId} />
                 { children }
                 <div className='w-64 shrink-0 lg:flex hidden h-full px-6'></div>
